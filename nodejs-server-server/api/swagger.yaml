@@ -1,0 +1,126 @@
+---
+swagger: "2.0"
+info:
+  description: "Consulta del menu bancanet"
+  version: "0.1.0"
+  title: "ANZEN"
+host: "localhost:9091"
+basePath: "/Menu"
+tags:
+- name: "Core Bancario"
+  description: "menu para la bancanet"
+  externalDocs:
+    description: "menu bancanet"
+    url: "http://localhost:9091/docs"
+paths:
+  /menu:
+    post:
+      tags:
+      - ""
+      summary: "/menu"
+      description: "menu bancanet"
+      operationId: "menuPOST"
+      parameters:
+      - in: "body"
+        name: "menu"
+        description: "Consulta menu por usuario"
+        required: false
+        schema:
+          $ref: "#/definitions/menu"
+      responses:
+        200:
+          description: "responde menu"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        403:
+          description: "Cliente no encontrado"
+          schema:
+            $ref: "#/definitions/inline_response_403"
+      x-swagger-router-controller: "DefaultController"
+definitions:
+  menu-res:
+    properties:
+      identificador-de-sesion:
+        type: "string"
+        example: "werwer12321"
+      hora-de-login:
+        type: "string"
+        example: "780"
+      fecha-login:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Fecha-de-Vigencia-de-Clave:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Razon-Social:
+        type: "string"
+        example: "Multiva"
+      Hora-login-previo:
+        type: "string"
+        example: "720"
+      Fecha-Login-previo:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Servicios-contratados:
+        type: "string"
+        example: "3"
+    description: "Valores de regreso de clave dinamica"
+  menu-in:
+    properties:
+      id:
+        type: "integer"
+        example: 1
+    description: "Valores de regreso de clave dinamica"
+  Error:
+    properties:
+      Error:
+        type: "string"
+        example: "Error en la consulta del menu"
+        description: "Respuesta de menu"
+    description: "Error de Respuesta"
+  menu:
+    properties:
+      id:
+        type: "integer"
+        example: 1
+    description: "Valores de regreso de clave dinamica"
+  inline_response_200:
+    properties:
+      identificador-de-sesion:
+        type: "string"
+        example: "werwer12321"
+      hora-de-login:
+        type: "string"
+        example: "780"
+      fecha-login:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Fecha-de-Vigencia-de-Clave:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Razon-Social:
+        type: "string"
+        example: "Multiva"
+      Hora-login-previo:
+        type: "string"
+        example: "720"
+      Fecha-Login-previo:
+        type: "string"
+        format: "date"
+        example: "12/12/12"
+      Servicios-contratados:
+        type: "string"
+        example: "3"
+    description: "Valores de regreso de clave dinamica"
+  inline_response_403:
+    properties:
+      Error:
+        type: "string"
+        example: "Error en la consulta del menu"
+        description: "Respuesta de menu"
+    description: "Error de Respuesta"
